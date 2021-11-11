@@ -1,0 +1,243 @@
+#include <stdio.h>
+#include <stdlib.h>
+void viderBuffer(void)
+{
+  int c;
+  while((c=getchar()) != EOF && c != '\n');
+ 
+}
+
+int main()
+{
+    int v1=0;   /* valeure anneau 1 */
+    int v2=0;   /* valeure anneau 2 */
+    float v3=0;   /* valeure anneau 1 */
+    float v4=0;   /* valeure anneau 1 */
+
+
+
+    float vi=0; /* valeure resistance en ohm */
+    float vt=0; /* valeure de la tolérence */
+    float vp=0; /* valeure plus petite fourchette de la resistance */
+    float vm=0; /* valeure plus grande fourchette de la resistance */
+
+
+
+    puts("Affichez la couleur de la première bande");
+    char couleur1 = getchar();
+    viderBuffer();
+
+    switch(couleur1)
+    {
+        case 'n':
+        v1=0;
+        break;
+
+        case 'm':
+        v1=1;
+        break;
+
+        case 'r':
+        v1=2;
+        break;
+
+        case 'o':
+        v1=3;
+        break;
+
+        case 'j':
+        v1=4;
+        break;
+
+        case 'v':
+        v1=5;
+        break;
+
+        case 'b':
+        v1=6;
+        break;
+
+        case 'w':
+        v1=7;
+        break;
+
+        case 'g':
+        v1=8;
+        break;
+
+        case 'l':  /* blanc */
+        v1=9;
+        break;
+
+        default:
+            puts("Erreur cette couleur n'est pas prise en compte");
+    }
+
+    puts("bande2");
+      char couleur2 = getchar();
+      viderBuffer();
+
+    switch(couleur2)
+    {
+        case 'n':
+        v2=0;
+        break;
+
+        case 'm':
+        v2=1;
+        break;
+
+        case 'r':
+        v2=2;
+        break;
+
+        case 'o':
+        v2=3;
+        break;
+
+        case 'j':
+        v2=4;
+        break;
+
+        case 'v':
+        v2=5;
+        break;
+
+        case 'b':
+        v2=6;
+        break;
+
+        case 'w':
+        v2=7;
+        break;
+
+        case 'g':
+        v2=8;
+        break;
+
+        default:
+            puts("pas une couleur");
+    }
+
+    puts("bande3");
+    char couleur3 = getchar();
+    viderBuffer();
+    
+    switch(couleur3)
+    {
+        case 'n':
+        v3=1;
+        break;
+
+        case 'm':
+        v3=10;
+        break;
+
+        case 'r':
+        v3=100;
+        break;
+
+        case 'o':
+        v3=1000;
+        break;
+
+        case 'j':
+        v3=10000;
+        break;
+
+        case 'v':
+        v3=100000;
+        break;
+
+        case 'b':
+        v3=1000000;
+        break;
+
+        case 'w':
+        v3=10000000;
+        break;
+
+        case 'g':
+        v3=100000000;
+        break;
+
+        case 'l':
+        v3=1000000000;
+        break;
+
+        case 'p':       /* or (premier) */
+        v3=0,1;
+        break;
+
+        case 'd':       /* argent (deuxieme) */
+        v3=0,01;
+        break;
+
+        default:
+            puts("pas une couleur");
+    }
+
+    puts("bande4");
+    char couleur4 = getchar();
+    viderBuffer();
+
+    switch(couleur4)
+    {
+        case 'n':
+        v4=0;
+        break;
+
+        case 'm':
+        v4=1;
+        break;
+
+        case 'r':
+        v4=2;
+        break;
+
+        case 'o':
+        v4=0;
+        break;
+
+        case 'j':
+        v4=0;
+        break;
+
+        case 'v':
+        v4=0,5;
+        break;
+
+        case 'b':
+        v4=0,25;
+        break;
+
+        case 'w':
+        v4=0,1;
+        break;
+
+        case 'g':
+        v4=0,005;
+        break;
+
+        case 'p':
+        v4=5;
+        break;
+
+        case 'd':
+        v4=10;
+        break;
+
+        default:
+            puts("pas une couleur");
+    }
+
+    vi=(v1*10+v2)*v3;          /*  calcul resistance */
+    vt=vi*v4/100;           /*  valure de la tolérence  */
+    vp=vi-vt;               /* tolérence minimum sur la resistance */
+    vm=vi+vt;               /* tolérence maximum sur la resistance */
+
+
+    printf("la valeure de la resistance est de %fOhm \nLa tolerence est %f %%\nLa fourchette est : %f < v < %f Ohm",vi,v4,vp,vm);
+
+    return 0;
+}
